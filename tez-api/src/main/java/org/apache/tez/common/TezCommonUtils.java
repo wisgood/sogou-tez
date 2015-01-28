@@ -84,7 +84,8 @@ public class TezCommonUtils {
         mkDirForAM(fs, p);
         LOG.info("Stage directory " + p + " doesn't exist and is created");
       }
-      baseStagingDir = fs.resolvePath(p);
+      //baseStagingDir = fs.resolvePath(p);
+      baseStagingDir = p;
     } catch (IOException e) {
       throw new TezUncheckedException(e);
     }

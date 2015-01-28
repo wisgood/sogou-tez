@@ -37,7 +37,7 @@
   <properties>
     <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
     <clover.license>${user.home}/clover.license</clover.license>
-    <hadoop.version>2.4.0</hadoop.version>
+    <hadoop.version>2.3.0</hadoop.version>
     <jetty.version>7.6.10.v20130312</jetty.version>
     <distMgmtSnapshotsId>apache.snapshots.https</distMgmtSnapshotsId>
     <distMgmtSnapshotsName>Apache Development Snapshot Repository</distMgmtSnapshotsName>
@@ -70,6 +70,16 @@
   </distributionManagement>
 
   <repositories>
+<repository>
+            <id>sogou.repo</id>
+            <url>http://cloud.sogou-inc.com/nexus/content/groups/public</url>
+            <name>Sogou Repository</name>
+        </repository>
+        <repository>
+            <id>sogou.repo.old</id>
+            <url>http://10.12.8.218:8080/nexus/content/groups/public</url>
+            <name>Old Sogou Repository</name>
+        </repository>
     <repository>
       <id>${distMgmtSnapshotsId}</id>
       <name>${distMgmtSnapshotsName}</name>

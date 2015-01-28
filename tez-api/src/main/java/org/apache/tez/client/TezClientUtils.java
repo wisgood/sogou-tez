@@ -123,7 +123,7 @@ public class TezClientUtils {
 
     Path p = new Path(uri);
     FileSystem fs = p.getFileSystem(conf);
-    p = fs.resolvePath(p);
+ //   p = fs.resolvePath(p);
 
     if (fs.isDirectory(p)) {
       return fs.listStatus(p);
@@ -723,8 +723,9 @@ public class TezClientUtils {
       LocalResourceVisibility visibility) throws IOException {
     LocalResource rsrc = Records.newRecord(LocalResource.class);
     FileStatus rsrcStat = fs.getFileStatus(p);
-    rsrc.setResource(ConverterUtils.getYarnUrlFromPath(fs.resolvePath(rsrcStat
-        .getPath())));
+    //rsrc.setResource(ConverterUtils.getYarnUrlFromPath(fs.resolvePath(rsrcStat
+    //    .getPath())));
+    rsrc.setResource(ConverterUtils.getYarnUrlFromPath(rsrcStat.getPath()));
     rsrc.setSize(rsrcStat.getLen());
     rsrc.setTimestamp(rsrcStat.getModificationTime());
     rsrc.setType(type);

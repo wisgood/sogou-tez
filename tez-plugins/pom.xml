@@ -34,9 +34,9 @@
           <name>!skipATS</name>
         </property>
       </activation>
-      <modules>
+      <!--modules>
         <module>tez-yarn-timeline-history</module>
-      </modules>
+      </modules-->
     </profile>
     <profile>
       <id>jdk6check</id>
