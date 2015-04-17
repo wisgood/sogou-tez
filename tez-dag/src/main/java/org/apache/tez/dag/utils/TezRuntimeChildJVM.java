@@ -71,8 +71,8 @@ public class TezRuntimeChildJVM {
       int applicationAttemptNumber,
       String javaOpts) {
 
-    Vector<String> vargs = new Vector<String>(9);
-
+    Vector<String> vargs = new Vector<String>(10);
+		vargs.add("(");
     vargs.add(Environment.JAVA_HOME.$() + "/bin/java");
 
     //set custom javaOpts
@@ -91,9 +91,13 @@ public class TezRuntimeChildJVM {
     vargs.add(containerIdentifier);
     vargs.add(tokenIdentifier);
     vargs.add(Integer.toString(applicationAttemptNumber));
+		
+		vargs.add(" < /dev/null  | rotatelogs -t " + getTaskLogFile(LogName.STDOUT) + " " 
+		      + "52400000B ;exit $PIPESTATUS ) 2>&1 |  rotatelogs -t " + getTaskLogFile(LogName.STDERR) 
+					+ " " + "52400000B;exit $PIPESTATUS" );
 
-    vargs.add("1>" + getTaskLogFile(LogName.STDOUT));
-    vargs.add("2>" + getTaskLogFile(LogName.STDERR));
+    //vargs.add("1>" + getTaskLogFile(LogName.STDOUT));
+    //vargs.add("2>" + getTaskLogFile(LogName.STDERR));
 
     // TODO Is this StringBuilder really required ? YARN already accepts a list of commands.
     // Final commmand
