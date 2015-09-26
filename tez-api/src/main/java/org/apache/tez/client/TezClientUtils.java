@@ -132,7 +132,7 @@ public class TezClientUtils {
     if (fs.isDirectory(p)) {
       return fs.listStatus(p);
     } else {
-      FileStatus fStatus = targetFS.getFileStatus(p);
+      FileStatus fStatus = fs.getFileStatus(p);
       return new FileStatus[]{fStatus};
     }
   }
